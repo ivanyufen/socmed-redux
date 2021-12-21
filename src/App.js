@@ -1,56 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { Routes, Route } from "react-router-dom";
+import { User } from './features/user/User';
+import { Post } from './features/post/Post';
+import { PostDetail } from './features/post/PostDetail';
+import { Album } from './features/album/Album';
+import { AlbumDetail} from './features/album/AlbumDetail';
 import './App.css';
+
+const NotExist = () => <div>Sorry, the page you're looking for doesn't exist.</div>;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <Routes>
+        <Route path="/" element={<User />} />
+        <Route path="users" element={<User />} />
+        <Route path="posts" element={<Post />} />
+        <Route path="post" element={<PostDetail />} />
+        <Route path="albums" element={<Album />} />
+        <Route path="album" element={<AlbumDetail />} />
+        <Route path="*" element={<NotExist />} />
+      </Routes>
     </div>
   );
 }
